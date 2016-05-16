@@ -12,6 +12,9 @@ XMLMemoryUnit::~XMLMemoryUnit() {
     delete memory;
 }
 
+/**
+ * Callback for cURL, takes in ptr and stores it in the class
+ */
 size_t XMLMemoryUnit::WriteCallback(char *ptr, size_t sizeDataItem, size_t numData) {
     size_t sizePreAppend = memory->bytes(); //Keep track of how full it is
 
