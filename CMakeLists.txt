@@ -8,6 +8,10 @@ find_package(curlpp REQUIRED)
 include_directories(${curlpp_INCLUDE_DIRS})
 set(LIBS ${LIBS} ${curlpp_LIBRARIES})
 
+find_package(libcurl REQUIRED)
+include_directories(${libcurl_INCLUDE_DIRS})
+set(LIBS ${LIBS} ${libcurl_LIBRARIES})
+
 find_package(LibXML++ REQUIRED)
 include_directories(${LibXML++_INCLUDE_DIRS})
 set(LIBS ${LIBS} ${LibXML++_LIBRARIES})
