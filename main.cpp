@@ -7,7 +7,7 @@ using namespace std;
 using namespace Glib;
 
 int main() {
-    std::locale::global(std::locale(""));
+    std::locale::global(std::locale(""));  //Required by ustring
 
     XMLMemoryUnit mem;
 
