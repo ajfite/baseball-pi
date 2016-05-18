@@ -21,7 +21,7 @@ Dependencies:
 Instructions:
 
 1. Download the source using your preffered method
-2. in the source director
+2. in the source directory
 
 ```bash
 mkdir build
