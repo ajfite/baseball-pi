@@ -12,6 +12,7 @@ using namespace std;
 /**
  * Retrieves an XML file and stores it in the XMLMemoryUnit class
  */
+//TODO: Handle error conditions
 void RetrieveXMLFile(Glib::ustring URL, XMLMemoryUnit * data) {
     try {
         Cleanup cleaner;

@@ -6,8 +6,12 @@
 #define BASEBALL_PI_XMLPPTOOLS_H
 
 
+#include "../DataStructures/Game.h"
+#include "../DataStructures/XMLMemoryUnit.h"
+
 class XMLppTools {
-//TODO:Parsexml
+public:
+    static void populateGameFromScoreboardXML(Glib::ustring url, Game * gameToPopulate, XMLMemoryUnit * scoreboardXMLMemory, Glib::ustring teamIDToFind);
 };
 
 

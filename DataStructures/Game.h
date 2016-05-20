@@ -6,8 +6,18 @@
 #define BASEBALL_PI_GAME_H
 
 
-class Game {
+#include <glibmm/ustring.h>
+#include "Team.h"
 
+/**
+ * Object representing a game
+ */
+class Game {
+public:
+    Glib::ustring gameID;
+    time_t startTime;
+    Team home;
+    Team away;
 };
 
 
