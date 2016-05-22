@@ -20,7 +20,6 @@ public:
     const Glib::ustring GPIO_DIR = "/sys/class/gpio";
     const Glib::ustring GPIO_EXPORT_FILE = "/export";
     const Glib::ustring GPIO_UNEXPORT_FILE = "/unexport";
-    const enum
 };
 
 
