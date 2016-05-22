@@ -20,6 +20,8 @@ public:
     const Glib::ustring GPIO_DIR = "/sys/class/gpio";
     const Glib::ustring GPIO_EXPORT_FILE = "/export";
     const Glib::ustring GPIO_UNEXPORT_FILE = "/unexport";
+    const Glib::ustring GPIO_VALUE_FILE = "/value";
+    const Glib::ustring GPIO_DIRECTION_FILE = "/direction";
 };
 
 
