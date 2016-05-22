@@ -22,13 +22,13 @@ Instructions:
 
 1. Download the source using your preffered method
 2. in the source directory
-```bash
-mkdir build
-cd build
-cmake ..
-make
-```
+    ```bash
+    mkdir build
+    cd build
+    cmake ..
+    make
+    ```
 3. Execute the new executable
-```bash
-./baseball-pi
-```
+    ```bash
+    ./baseball-pi
+    ```
