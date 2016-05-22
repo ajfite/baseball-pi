@@ -84,3 +84,35 @@ void GPIOPin::makeIn() {
 void GPIOPin::makeOut() {
     writeInOut(false);
 }
+
+/**
+ * Reads a value and returns a bool (int) indicating the value
+ */
+bool GPIOPin::readValue() {
+    ifstream value;
+    value.open((GPIO_DIR + GPIO_PIN_DIRECTORY + GPIO_VALUE_FILE).c_str());
+
+    char val = (char) value.get();
+
+    value.close();
+
+    return val == '1';
+}
+
+/**
+ * Toggles the current state
+ * return: the state toggled from
+ */
+bool GPIOPin::toggle() {
+    bool currVal = readValue();
+    writeInOut(!currVal);
+    return currVal;
+}
+
+/**
+ * Gives whether the gpio is an input or not
+ * FIXME: Unimplemented
+ */
+bool GPIOPin::isInput() {
+    return false; //UNIMPLEMENTED: DO NOT USE YET
+}

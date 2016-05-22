@@ -33,6 +33,9 @@ public:
     void writeLow();
     bool toggle();
 };
-
+/* I leave it up to the writer to keep track of what the pins are used for
+ * what this time.  In the future this information will be populated from
+ * a configuration file allowing wiring changes without compiling
+ */
 
 #endif //BASEBALL_PI_GPIOPIN_H
