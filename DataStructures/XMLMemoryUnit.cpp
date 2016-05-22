@@ -18,7 +18,7 @@ XMLMemoryUnit::~XMLMemoryUnit() {
 size_t XMLMemoryUnit::WriteCallback(char *ptr, size_t sizeDataItem, size_t numData) {
     size_t sizePreAppend = memory->bytes(); //Keep track of how full it is
 
-    memory->append(ptr); //Must append since this function is called in chunks
+    memory->append(ptr); //Must append since this function is called multiple times for a single file
 
     return memory->bytes() - sizePreAppend;
 }
