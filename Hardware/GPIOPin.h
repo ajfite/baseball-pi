@@ -11,10 +11,8 @@
 class GPIOPin {
 private:
     Glib::ustring gpioPinNum;
-public:
-    GPIOPin();
-    GPIOPin(Glib::ustring pinNum);
-    ~GPIOPin();
+    void writeInOut(bool in);
+    void writeValue(bool val);
 
     //Constants needed for GPIO operation
     const Glib::ustring GPIO_DIR = "/sys/class/gpio";
@@ -22,6 +20,18 @@ public:
     const Glib::ustring GPIO_UNEXPORT_FILE = "/unexport";
     const Glib::ustring GPIO_VALUE_FILE = "/value";
     const Glib::ustring GPIO_DIRECTION_FILE = "/direction";
+    Glib::ustring GPIO_PIN_DIRECTORY;
+public:
+    GPIOPin();
+    GPIOPin(Glib::ustring pinNum);
+    ~GPIOPin();
+    void makeIn();
+    void makeOut();
+    bool readValue();
+    bool isInput();
+    void writeHigh();
+    void writeLow();
+    bool toggle();
 };
 
 
