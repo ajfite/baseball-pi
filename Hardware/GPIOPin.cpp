@@ -84,11 +84,3 @@ void GPIOPin::makeIn() {
 void GPIOPin::makeOut() {
     writeInOut(false);
 }
-
-
-
-
-
-
-
-
