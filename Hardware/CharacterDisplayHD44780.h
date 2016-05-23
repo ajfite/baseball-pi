@@ -55,7 +55,7 @@ public:
 
     CharacterDisplayHD44780();
     ~CharacterDisplayHD44780();
-    void SendMessage(Glib::ustring msg, unsigned short line);
+    void SendMessage(std::string msg, unsigned short line);
     //TODO: Make the LCD screen commands
 };
 

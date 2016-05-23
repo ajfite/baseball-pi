@@ -90,11 +90,7 @@ void CharacterDisplayHD44780::ClearData() {
     D7->writeLow();
 }
 
-void CharacterDisplayHD44780::SendMessage(Glib::ustring msg, unsigned short line) {
-    if(line > MAX_LINES || line < 0) {
-        throw "Invalid line";
-    }
-
+void CharacterDisplayHD44780::SendMessage(string msg, unsigned short line) {
     LCDCommand(line, CMD);
 
     for(size_t i = 0; i < msg.length() && i < MAX_CHAR_WIDTH; i++) {
