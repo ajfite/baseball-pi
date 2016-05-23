@@ -35,6 +35,7 @@ public:
 
     CharacterDisplayHD44780();
     ~CharacterDisplayHD44780();
+    //TODO: Make the LCD screen commands
 };
 
 

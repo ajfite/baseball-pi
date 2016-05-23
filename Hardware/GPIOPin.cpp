@@ -8,6 +8,8 @@
 using namespace std;
 using namespace Glib;
 
+//TODO: Handle error conditions in all of these functions
+
 /**
  * Instantiates a gpio pin
  */
