@@ -5,7 +5,7 @@
 # IT IS NOT DESIGNED TO BE A GENERAL PURPOSE SCRIPT
 # RUN AT YOUR OWN RISK
 echo "Updating git repository"
-git pull
+git pull origin master
 echo "Removing Build Directory"
 rm -rf build
 echo "Remaking Build Directory"
