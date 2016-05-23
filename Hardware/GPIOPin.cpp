@@ -6,27 +6,30 @@
 #include <fstream>
 
 using namespace std;
+using namespace Glib;
+
+/**
+ * DO NOT USE
+ * Default constructor just throws exception
+ */
+GPIOPin::GPIOPin() {
+    throw "Must instantiate with at least 1 argument";
+}
 
 /**
  * Instantiates a gpio pin
  */
-GPIOPin::GPIOPin(Glib::ustring pinNum) {
+GPIOPin::GPIOPin(ustring pinNum) {
+    ofstream exportFile; //Can't use "export" because its a reserved word
+
     this->gpioPinNum = pinNum;
     this->GPIO_PIN_DIRECTORY = "/gpio" + pinNum;
-    ofstream export;
-    export.open((GPIO_DIR + GPIO_EXPORT_FILE).c_str());
 
-    export << pinNum.c_str(); //Exports pin number
+    exportFile.open((GPIO_DIR + GPIO_EXPORT_FILE).c_str());
 
-    export.close();
-}
+    exportFile << pinNum.c_str(); //Exports pin number
 
-/**
- * DO NOT USE
- * Default constructor just sets up pin 4
- */
-GPIOPin::GPIOPin() {
-    this->GPIOPin("4");
+    exportFile.close();
 }
 
 GPIOPin::~GPIOPin() {
