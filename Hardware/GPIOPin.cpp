@@ -49,7 +49,7 @@ void GPIOPin::writeInOut(bool in) {
     if(in) {
         direction << "in";
     } else {
-        direction << "out";
+        direction << (string)"out";
     }
 
     direction.close();

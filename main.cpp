@@ -22,14 +22,20 @@ int main() {
     XMLppTools::populateGameFromScoreboardXML(url, &seaVs, &scoreboardToday, team); //Take XML and populate the Game Object
     //TODO: Need to handle double headers, this only handles the first game
 
-    GPIOPin pin26("26");
-    pin26.makeOut();
 
-    //Testing GPIO class
-    for(int i = 0; i<=100; i++) {
-        pin26.toggle();
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    }
+    //GPIO Test
+    GPIOPin * pin26 = new GPIOPin("26");
+    pin26->makeOut();
+
+    this_thread::sleep_for(chrono::milliseconds(1000));
+
+    pin26->writeHigh();
+
+    this_thread::sleep_for(chrono::milliseconds(5000));
+
+    pin26->writeLow();
+
+    delete(pin26);
 
     return EXIT_SUCCESS;
 }
