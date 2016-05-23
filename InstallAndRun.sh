@@ -16,4 +16,5 @@ cmake ..
 echo "Making"
 make
 echo "Executing baseball-pi with root (sudo) privileges"
-sudo ./baseball-pi
+echo "You will be prompted for your password"
+sudo ./build/baseball-pi
