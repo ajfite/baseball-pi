@@ -45,12 +45,12 @@ GPIOPin::~GPIOPin() {
  */
 void GPIOPin::writeInOut(bool in) {
     ofstream direction;
-    direction.open((GPIO_DIR + GPIO_UNEXPORT_FILE).c_str());
+    direction.open((GPIO_DIR + GPIO_PIN_DIRECTORY + GPIO_DIRECTION_FILE).c_str());
 
     if(in) {
         direction << "in";
     } else {
-        direction << (string)"out";
+        direction << "out";
     }
 
     direction.close();
@@ -119,7 +119,7 @@ bool GPIOPin::readValue() {
  */
 bool GPIOPin::toggle() {
     bool currVal = readValue();
-    writeInOut(!currVal);
+    writeValue(!currVal);
     return currVal;
 }
 
