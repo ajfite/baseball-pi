@@ -66,7 +66,7 @@ void GPIOPin::writeValue(bool val) {
     cout << (GPIO_DIR + GPIO_PIN_DIRECTORY + GPIO_VALUE_FILE).c_str() << endl;
     cout << "Writing " << (int)val << endl;
 
-    value << (int)val; //Write value to file
+    value << to_string((int)val); //Write value to file
 
     value.close();
 }
