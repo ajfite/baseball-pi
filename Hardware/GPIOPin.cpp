@@ -4,7 +4,6 @@
 
 #include "GPIOPin.h"
 #include <fstream>
-#include <iostream>
 
 using namespace std;
 using namespace Glib;
@@ -62,9 +61,6 @@ void GPIOPin::writeInOut(bool in) {
 void GPIOPin::writeValue(bool val) {
     ofstream value;
     value.open((GPIO_DIR + GPIO_PIN_DIRECTORY + GPIO_VALUE_FILE).c_str());
-
-    cout << (GPIO_DIR + GPIO_PIN_DIRECTORY + GPIO_VALUE_FILE).c_str() << endl;
-    cout << "Writing " << (int)val << endl;
 
     value << to_string((int)val); //Write value to file
 
