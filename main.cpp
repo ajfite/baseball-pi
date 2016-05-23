@@ -19,5 +19,7 @@ int main() {
     XMLppTools::populateGameFromScoreboardXML(url, &seaVs, &scoreboardToday, team); //Take XML and populate the Game Object
     //TODO: Need to handle double headers, this only handles the first game
 
+
+
     return EXIT_SUCCESS;
 }

@@ -24,6 +24,9 @@ GPIOPin::GPIOPin(ustring pinNum) {
     exportFile.close();
 }
 
+/**
+ * Unexports the pin for other uses
+ */
 GPIOPin::~GPIOPin() {
     ofstream unexport;
     unexport.open((GPIO_DIR + GPIO_UNEXPORT_FILE).c_str());
@@ -33,6 +36,10 @@ GPIOPin::~GPIOPin() {
     unexport.close();
 }
 
+/**
+ * Sets up pin as an in or out
+ * in: true for "in", false for "out"
+ */
 void GPIOPin::writeInOut(bool in) {
     ofstream direction;
     direction.open((GPIO_DIR + GPIO_UNEXPORT_FILE).c_str());
@@ -72,10 +79,16 @@ void GPIOPin::writeLow() {
     writeValue(false);
 }
 
+/**
+ * Sets the pin as an input
+ */
 void GPIOPin::makeIn() {
     writeInOut(true);
 }
 
+/**
+ * Sets the pin as an output
+ */
 void GPIOPin::makeOut() {
     writeInOut(false);
 }
