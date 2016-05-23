@@ -35,6 +35,11 @@ int main() {
 
     pin26->writeLow();
 
+    for(int i = 0; i < 100; i++) {
+        this_thread::sleep_for(chrono::milliseconds(500));
+        pin26->toggle();
+    }
+
     delete(pin26);
 
     return EXIT_SUCCESS;
