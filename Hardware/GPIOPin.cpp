@@ -9,14 +9,6 @@ using namespace std;
 using namespace Glib;
 
 /**
- * DO NOT USE
- * Default constructor just throws exception
- */
-GPIOPin::GPIOPin() {
-    throw "Must instantiate with at least 1 argument";
-}
-
-/**
  * Instantiates a gpio pin
  */
 GPIOPin::GPIOPin(ustring pinNum) {
@@ -119,3 +111,12 @@ bool GPIOPin::toggle() {
 bool GPIOPin::isInput() {
     return false; //UNIMPLEMENTED: DO NOT USE YET
 }
+
+/**
+ * Default constructor
+ * just instantiates pin 4
+ * Not really useful unless you want pin 4
+ */
+GPIOPin::GPIOPin() : GPIOPin("4") { }
+
+
