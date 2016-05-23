@@ -97,8 +97,8 @@ void CharacterDisplayHD44780::SendMessage(Glib::ustring msg, unsigned short line
 
     LCDCommand(line, CMD);
 
-    for(int i = 0; i < msg.length() && i < MAX_CHAR_WIDTH; i++) {
-        LCDCommand(msg[i], CHAR);
+    for(size_t i = 0; i < msg.length() && i < MAX_CHAR_WIDTH; i++) {
+        LCDCommand((unsigned short)msg.at(i), CHAR);
     }
 }
 
