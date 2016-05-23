@@ -124,7 +124,15 @@ bool GPIOPin::toggle() {
  * FIXME: Unimplemented
  */
 bool GPIOPin::isInput() {
-    return false; //UNIMPLEMENTED: DO NOT USE YET
+    ifstream direction;
+    string val;
+    direction.open((GPIO_DIR + GPIO_PIN_DIRECTORY + GPIO_DIRECTION_FILE).c_str());
+
+    direction >> val;
+
+    direction.close();
+
+    return val == "in";
 }
 
 /**

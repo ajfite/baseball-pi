@@ -5,6 +5,7 @@
 #include "DataStructures/Game.h"
 #include "Tools/XMLppTools.h"
 #include "Hardware/GPIOPin.h"
+#include "Hardware/CharacterDisplayHD44780.h"
 
 using namespace std;
 using namespace Glib;
@@ -27,20 +28,16 @@ int main() {
     GPIOPin * pin26 = new GPIOPin("26");
     pin26->makeOut();
 
-    this_thread::sleep_for(chrono::milliseconds(1000));
-
-    pin26->writeHigh();
-
-    this_thread::sleep_for(chrono::milliseconds(5000));
-
-    pin26->writeLow();
-
-    for(int i = 0; i < 100; i++) {
+    for(int i = 0; i < 10; i++) {
         this_thread::sleep_for(chrono::milliseconds(500));
         pin26->toggle();
     }
 
     delete(pin26);
+
+    //Screen Test
+    CharacterDisplayHD44780 * disp = new CharacterDisplayHD44780();
+    disp->SendMessage("HELLO WORLD", disp->LINE0);
 
     return EXIT_SUCCESS;
 }
