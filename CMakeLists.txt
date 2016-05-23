@@ -16,6 +16,6 @@ find_package(LibXML++ REQUIRED)
 include_directories(${LibXML++_INCLUDE_DIRS})
 set(LIBS ${LIBS} ${LibXML++_LIBRARIES})
 
-set(SOURCE_FILES main.cpp DataStructures/Game.cpp DataStructures/Game.h DataStructures/XMLMemoryUnit.cpp DataStructures/XMLMemoryUnit.h Tools/CURLTools.cpp Tools/CURLTools.h Tools/XMLppTools.cpp Tools/XMLppTools.h Hardware/HD44780-20x4Disp.h DataStructures/Team.cpp DataStructures/Team.h Hardware/GPIOPin.cpp Hardware/GPIOPin.h)
+set(SOURCE_FILES main.cpp DataStructures/Game.cpp DataStructures/Game.h DataStructures/XMLMemoryUnit.cpp DataStructures/XMLMemoryUnit.h Tools/CURLTools.cpp Tools/CURLTools.h Tools/XMLppTools.cpp Tools/XMLppTools.h DataStructures/Team.cpp DataStructures/Team.h Hardware/GPIOPin.cpp Hardware/GPIOPin.h Hardware/CharacterDisplayHD44780.cpp Hardware/CharacterDisplayHD44780.h)
 add_executable(baseball_pi ${SOURCE_FILES})
 target_link_libraries(baseball_pi ${LIBS})
