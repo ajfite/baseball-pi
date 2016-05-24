@@ -15,7 +15,6 @@
 class Game {
 public:
     Glib::ustring gameID;
-    time_t startTime;
     Team home;
     Team away;
 };

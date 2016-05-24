@@ -21,7 +21,7 @@ void RetrieveXMLFile(Glib::ustring URL, XMLMemoryUnit * data) {
         types::WriteFunctionFunctor functor(data, &XMLMemoryUnit::WriteCallback);
 
         easyGrab.setOpt(new Options::Encoding("UTF-8"));
-        easyGrab.setOpt(new Options::Verbose(true));
+        //easyGrab.setOpt(new Options::Verbose(true)); //Uncomment for debugging
         easyGrab.setOpt(new Options::Url(URL.c_str()));
         easyGrab.setOpt(new Options::WriteFunction(functor));
 
