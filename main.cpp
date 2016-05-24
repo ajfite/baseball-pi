@@ -39,9 +39,9 @@ int main() {
     //Mockup Scoreboard
     CharacterDisplayHD44780 * disp = new CharacterDisplayHD44780();
     disp->SendMessage("   123456789 RHE", disp->LINE0);
-    disp->SendMessage("SEA040002001 790", disp->LINE0);
-    disp->SendMessage("LAA000001000 141", disp->LINE0);
-    disp->SendMessage("Final Win: Hernandez", disp->LINE0);
+    disp->SendMessage("SEA040002001 790", disp->LINE1);
+    disp->SendMessage("LAA000001000 141", disp->LINE2);
+    disp->SendMessage("Final Win: Hernandez", disp->LINE3);
 
     return EXIT_SUCCESS;
 }
