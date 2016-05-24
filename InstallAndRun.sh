@@ -4,7 +4,7 @@
 #
 # IT IS NOT DESIGNED TO BE A GENERAL PURPOSE SCRIPT
 # RUN AT YOUR OWN RISK
-cwd = $(pwd) #Get current working directory
+cwd=$(pwd) #Get current working directory
 echo "Updating git repository"
 git pull origin master
 echo "Removing Build Directory"
