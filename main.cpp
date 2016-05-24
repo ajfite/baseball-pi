@@ -29,15 +29,19 @@ int main() {
     pin26->makeOut();
 
     for(int i = 0; i < 10; i++) {
-        this_thread::sleep_for(chrono::milliseconds(500));
+        this_thread::sleep_for(chrono::milliseconds(100));
         pin26->toggle();
     }
 
     delete(pin26);
 
     //Screen Test
+    //Mockup Scoreboard
     CharacterDisplayHD44780 * disp = new CharacterDisplayHD44780();
-    disp->SendMessage("HELLO WORLD", disp->LINE0);
+    disp->SendMessage("   123456789 RHE", disp->LINE0);
+    disp->SendMessage("SEA040002001 790", disp->LINE0);
+    disp->SendMessage("LAA000001000 141", disp->LINE0);
+    disp->SendMessage("Final Win: Hernandez", disp->LINE0);
 
     return EXIT_SUCCESS;
 }
