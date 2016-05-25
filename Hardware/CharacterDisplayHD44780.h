@@ -8,7 +8,13 @@
 #include <chrono>
 #include "GPIOPin.h"
 
-/* My pin set up is as follows
+/**
+ * This project uses a Hitachi HD44780 4x20 character display
+ * it should be compatible with any 4x20 character display based on the Hitachi controller
+ *
+ * More information on the controller can be found here
+ *
+ * My pin set up is as follows
  * #  | LCD | Description | GPIO
  * 1  - VSS - Power 5v    - 5v
  * 2  - VDD - Power Gnd   - Gnd
@@ -27,7 +33,6 @@
  * 15 - A   - Light 5v    - 5v (future transistor for backlight control)
  * 16 - K   - Light Gnd   - Gnd
  */
-
 class CharacterDisplayHD44780 {
 private:
     const int MAX_CHAR_WIDTH = 40;
@@ -55,8 +60,12 @@ public:
 
     CharacterDisplayHD44780();
     ~CharacterDisplayHD44780();
-    void SendMessage(std::string msg, unsigned short line);
+    void SendMessage(std::string msg, unsigned short startAddress);
     //TODO: Make the LCD screen commands
+    //TODO: Safely destroy screen
+    //TODO: General clear command
+    //TODO: Implement shifting
+    //TODO: Implement Cursor controls
 };
 
 

@@ -35,7 +35,7 @@ void CharacterDisplayHD44780::LCDCommand(unsigned short command, bool type) {
 
     ClearData();
 
-    //Send command (1st part)
+    //Send command (1st part) (upper bits)
     if((command & 0x10) == 0x10) {
         D4->writeHigh();
     }
@@ -52,7 +52,7 @@ void CharacterDisplayHD44780::LCDCommand(unsigned short command, bool type) {
     LCDEnableToggle();
     ClearData();
 
-    //Send command (2nd part)
+    //Send command (2nd part) (lower bits)
     if((command & 0x01) == 0x01) {
         D4->writeHigh();
     }
@@ -90,13 +90,25 @@ void CharacterDisplayHD44780::ClearData() {
     D7->writeLow();
 }
 
-void CharacterDisplayHD44780::SendMessage(string msg, unsigned short line) {
-    LCDCommand(line, CMD);
+void CharacterDisplayHD44780::SendMessage(string msg, unsigned short startAddress) {
+    LCDCommand(startAddress, CMD);
 
     for(size_t i = 0; i < msg.length() && i < MAX_CHAR_WIDTH; i++) {
         LCDCommand((unsigned short)msg.at(i), CHAR);
     }
 }
+
+CharacterDisplayHD44780::~CharacterDisplayHD44780() {
+    //TODO: Clear screen
+    delete(RS);
+    delete(E);
+    delete(D4);
+    delete(D5);
+    delete(D6);
+    delete(D7);
+}
+
+
 
 
 
