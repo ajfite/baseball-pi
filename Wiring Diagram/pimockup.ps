@@ -1,11 +1,11 @@
 %!PS-Adobe-3.0 EPSF-3.0
 %%Title: pimockup.ps
 %%Creator: XCircuit v3.9 rev46
-%%CreationDate: Tue May 24 18:47:07 2016
+%%CreationDate: Wed May 25 13:34:35 2016
 %%Pages: 1
-%%BoundingBox: 68 68 870 722
+%%BoundingBox: 68 68 1002 820
 %%DocumentNeededResources: font Helvetica Helvetica-Bold Helvetica-Oblique 
-%%+ font Times-Roman Times-RomanISO 
+%%+ font Times-Roman 
 %%EndComments
 %%BeginProlog
 %
@@ -182,11 +182,6 @@
 %%EndResource
 %%EndProlog
 
-/Times-Roman findfont dup length dict begin
-{1 index /FID ne {def} {pop pop} ifelse} forall
-/Encoding ISOLatin1Encoding def currentdict end
-/Times-RomanISO exch definefont pop
-
 % XCircuit output starts here.
 
 %%BeginSetup
@@ -331,7 +326,7 @@ sce
 (D7) {/Helvetica cf} 2 23 -0.000 1.000 224 288 label
 (A) {/Helvetica cf} 2 23 -0.000 1.000 224 352 label
 (K) {/Helvetica cf} 2 23 -0.000 1.000 224 416 label
-(4x20 Character Display) {/Helvetica-Oblique 0.700 cf} 2 21 -0.000 1.000 0 192 
+(4x20 Character Display) {/Helvetica-Oblique 0.750 cf} 2 21 -0.000 1.000 0 192 
 label
 endgate
 } def
@@ -342,38 +337,6 @@ begingate
 248 1.000 0 0 6 0.000 360.000 xcarc
 1.000 0.000 0.000 scb
 (x) {/Times-Roman cf} 2 29 -0.000 1.000 0 0 pinlabel
-endgate
-} def
-
-/analoglib3::MiMCap {
-<</@substype (sub) (lindex {sub well} 0) pop /@subs (agnd) /@fingers (1) /@length 
-(1u) /@width (1u) /p_yps2 -8 /p_xps2 48 /p_yps1 24 /p_xps1 48 /p_yps 
-56 /p_xps 48 /p_rot 0 /@class (C) /@value (1.0) /@units (p) /@index (?) /p_jst 
-20 >> begingate
-1 1.000 0 -64 0 -6 2 polygon
-1 1.000 0 64 0 6 2 polygon
-1 1.000 -32 6 32 6 2 polygon
-1.000 0.000 0.000 scb
-(1) {/Times-Roman cf} 2 9 0.000 1.000 0 64 pinlabel
-(2) {/Times-Roman cf} 2 13 0.000 1.000 0 -64 pinlabel
-0.180 0.545 0.341 scb
-mark @subs (=) @substype ( ) @fingers ( M=) @width ( W=) @length ( L=) @units 
-@value ( %p1 %p2 MIM C=) @index (spice:C) {/Times-Roman cf} ctmk 4 0.000 1.000 
--208 -160 infolabel
-(sim:c %p1 %p2) {/Times-Roman cf} 2 4 0.000 1.000 -208 -208 infolabel
-0.647 0.165 0.165 scb
-mark (F) @units {hS} @value {/Times-Roman cf} ctmk p_jst p_rot 0.700 p_xps1 
-p_yps1 label
-0.180 0.545 0.341 scb
-mark @index (pcb:C) {/Times-Roman cf} ctmk 20 0.000 1.000 -208 -256 infolabel
-0.000 0.000 1.000 scb
-mark @index @class {/Times-Roman cf} ctmk 20 p_rot 0.700 p_xps p_yps label
-0.647 0.165 0.165 scb
-mark @fingers {Tf} (=) {Tf} (M) {CR} @length {Tf} (=) {Tf} (L) {CR} @width {Ts} 
-{hS} (=) {Ts} {hS} (W) {/Times-RomanISO cf} ctmk 28 p_rot 0.700 p_xps2 p_yps2 
-label
-sce
-1 1.000 0 -80 74 66.000 114.000 xcarc
 endgate
 } def
 
@@ -389,6 +352,45 @@ begingate
 endgate
 } def
 
+/analog::resistor {
+begingate
+1 1.000 0 64 0 36 2 polygon
+1 1.000 0 -64 0 -36 2 polygon
+1 1.000 0 -36 14 -30 -14 -18 14 -6 -14 6 14 18 -14 30 0 36 8 polygon
+1.000 0.000 0.000 scb
+(r.1) {/Times-Roman cf} 2 9 0.000 1.000 0 64 pinlabel
+(r.2) {/Times-Roman cf} 2 13 0.000 1.000 0 -64 pinlabel
+0.180 0.545 0.341 scb
+(spice:R%i %pr.1 %pr.2 1.0K) {/Times-Roman cf} 2 0 0.000 1.000 -208 -160 
+infolabel
+(sim:r %pr.1 %pr.2) {/Times-Roman cf} 2 0 0.000 1.000 -208 -208 infolabel
+endgate
+} def
+
+/liec_dc::potentiometer {
+begingate
+1.000 -0.000 -32 0 analog::resistor
+1 1.000 -16 16 0 32 2 polygon
+1 1.000 -16 16 0 0 2 polygon
+1 1.000 -16 16 32 16 2 polygon
+1.000 0.000 0.000 scb
+{/Helvetica cf} 1 16 0.000 1.000 96 0 label
+0.000 0.000 0.000 scb
+(10k) {/Helvetica cf} 2 16 0.000 1.000 0 -32 label
+endgate
+} def
+
+/generic::circle {
+% trivial
+begingate
+1 1.000 16 0 6 0.000 360.000 xcarc
+1 1.000 0 0 10 0 2 polygon
+1.000 0.000 0.000 scb
+(out) {/Times-Roman cf} 2 4 -0.000 1.000 16 0 pinlabel
+(out) {/Times-Roman cf} 2 7 -0.000 1.000 0 0 pinlabel
+endgate
+} def
+
 
 %%EndSetup
 
@@ -396,7 +398,7 @@ endgate
 %%PageOrientation: Portrait
 /pgsave save def bop
 1.0000 inchscale
-2.6000 setlinewidth 1878 1899 translate
+2.6000 setlinewidth 1878 2048 translate
 
 0.000 0.000 0.000 scb
 1.000 0.000 80 -464 ic_templates::_generic40
@@ -410,12 +412,57 @@ sce
 1 1.000 -512 -1136 -464 -1136 -464 -1024 -1600 -1024 4 polygon
 1.000 0.000 -1600 -1024 generic::dot
 1.000 0.000 0.000 scb
-1.000 90.000 -64 -1552 <</p_rot 270 /p_yps2 -24 /p_xps2 80 /p_yps1 -24 /p_yps 
-24 /p_xps -48 /@substype (sub) >> analoglib3::MiMCap
 1.000 0.000 -1680 -960 generic::dot
 1.000 90.000 -1600 -960 generic::jumper
 1 1.000 -512 -1200 -384 -1200 -384 -960 -1584 -960 4 polygon
 1 1.000 -1616 -960 -1680 -960 2 polygon
+0.000 0.000 0.000 scb
+1.000 0.000 -1440 -1280 liec_dc::potentiometer
+1 1.000 -992 -1264 -1408 -1264 2 polygon
+0.180 0.545 0.341 scb
+1 1.000 -1472 -1216 -1600 -1216 2 polygon
+1.000 0.000 0.000 scb
+1.000 90.000 -1600 -1344 generic::jumper
+1.000 0.000 -1680 -1344 generic::dot
+1 1.000 -1680 -1344 -1616 -1344 2 polygon
+1 1.000 -1584 -1344 -1472 -1344 2 polygon
+0.180 0.545 0.341 scb
+1.000 0.000 -1600 -1216 generic::dot
+1.000 0.000 0.000 scb
+1.000 90.000 -1600 -1136 generic::jumper
+1 1.000 -992 -1136 -1584 -1136 2 polygon
+1 1.000 -1616 -1136 -1680 -1136 2 polygon
+0.180 0.545 0.341 scb
+1 1.000 -992 -1200 -1184 -1200 -1184 -1184 -1600 -1184 4 polygon
+1.000 0.000 -1600 -1184 generic::dot
+1.000 0.000 0.000 scb
+1.000 0.000 -1680 -1136 generic::dot
+0.000 0.000 1.000 scb
+1 1.000 -512 -1456 48 -1456 48 -816 3 polygon
+1 1.000 -512 -1392 -272 -1392 -272 -816 3 polygon
+1 1.000 -512 -1328 -320 -1328 -320 -864 -544 -864 -544 -448 5 polygon
+1 1.000 -544 -416 -544 -192 2 polygon
+1 1.000 -544 -160 -544 128 -272 128 -272 16 4 polygon
+1.000 0.000 -544 -432 generic::jumper
+1.000 0.000 -544 -176 generic::jumper
+1 1.000 -512 -1264 -336 -1264 2 polygon
+1.000 90.000 -320 -1264 generic::jumper
+1.000 90.000 -272 -1264 generic::jumper
+1 1.000 -304 -1264 -288 -1264 2 polygon
+1 1.000 -256 -1264 -16 -1264 -16 -816 3 polygon
+1 1.000 -992 -1328 -1344 -1328 -1344 -1856 784 -1856 784 -624 432 -624 6 
+polygon
+0.180 0.545 0.341 scb
+1.000 90.000 -1344 -1392 generic::jumper
+1 1.000 -1328 -1392 -992 -1392 2 polygon
+1 1.000 -1360 -1392 -1600 -1392 2 polygon
+1.000 0.000 -1600 -1392 generic::dot
+0.000 0.000 1.000 scb
+1 1.000 -992 -1456 -1280 -1456 -1280 -1824 176 -1824 176 -816 5 polygon
+0.180 0.545 0.341 scb
+1.000 90.000 -1600 -1616 generic::circle
+1.000 0.000 0.000 scb
+1.000 90.000 -1680 -1616 generic::circle
 pgsave restore showpage
 
 %%Trailer
