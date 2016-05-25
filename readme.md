@@ -2,13 +2,13 @@
 
 A Baseball scoreboard designed for the Raspberry Pi 3, a work in progress.  Go Mariners.
 
-[Visual mockup of the hardware components](https://goldman60.github.io/baseball-pi/images/Visual%20Mockup.svg)
+* [Visual mockup of the hardware components](https://goldman60.github.io/baseball-pi/images/Visual%20Mockup.svg)
 
-[Progress pictures on imgur](http://imgur.com/a/cskun)
+* [Progress pictures on imgur](http://imgur.com/a/cskun)
 
-[Visit the project website and blog here!](https://goldman60.github.io/baseball-pi/)
+* [Visit the project website and blog here!](https://goldman60.github.io/baseball-pi/)
 
-This project is licensed under the MIT License, see license.md for more details.
+* This project is licensed under the MIT License, see license.md for more details.
 
 ##Hardware
 * 20x4 Character Display (based on the HD44780 controller)
