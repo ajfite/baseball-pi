@@ -5,6 +5,9 @@
 //TODO: Recompile curlpp so I don't need this
 
 #include "CURLTools.h"
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/Easy.hpp>
 
 using namespace cURLpp;
 using namespace std;

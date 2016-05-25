@@ -6,10 +6,8 @@
 #define BASEBALL_PI_CURLTOOLS_H
 
 #include <glibmm/ustring.h>
-#include <curlpp/cURLpp.hpp>
-#include <curlpp/Options.hpp>
-#include <curlpp/Easy.hpp>
 #include "../DataStructures/XMLMemoryUnit.h"
+
 class CURLTools {
 public:
     static void RetrieveXMLFile(Glib::ustring URL, XMLMemoryUnit *data);
