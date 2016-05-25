@@ -6,8 +6,7 @@ A Baseball scoreboard designed for the Raspberry Pi 3, a work in progress.  Go M
 
 [Progress pictures on imgur](http://imgur.com/a/cskun)
 
-I'll have a blog up soon documenting my work on the project, you can follow [@ajfite](https://twitter.com/AJFite)
-on Twitter for now.
+[Visit the project website and blog here!](https://goldman60.github.io/baseball-pi/)
 
 This project is licensed under the MIT License, see license.md for more details.
 
