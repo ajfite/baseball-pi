@@ -21,7 +21,7 @@ int main() {
     const ustring urlScoreboard = "http://gd2.mlb.com/components/game/mlb" + today->MLBDateString() + "scoreboard.xml";
     const ustring team = "sea"; //TODO: Enum of the possible IDs
 
-    RetrieveXMLFile(urlScoreboard, &scoreboardToday); //Pull XML from MLB API
+    CURLTools::RetrieveXMLFile(urlScoreboard, &scoreboardToday); //Pull XML from MLB API
 
     XMLppTools::populateGameFromScoreboardXML(urlScoreboard, &seaVs, &scoreboardToday, team); //Take XML and populate the Game Object
     //TODO: Need to handle double headers, this only handles the first game (lowish priority at the moment)

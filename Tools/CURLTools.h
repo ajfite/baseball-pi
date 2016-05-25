@@ -10,7 +10,8 @@
 #include <curlpp/Options.hpp>
 #include <curlpp/Easy.hpp>
 #include "../DataStructures/XMLMemoryUnit.h"
-
-void RetrieveXMLFile(Glib::ustring URL, XMLMemoryUnit * data);
-
+class CURLTools {
+public:
+    static void RetrieveXMLFile(Glib::ustring URL, XMLMemoryUnit *data);
+};
 #endif //BASEBALL_PI_CURLTOOLS_H
