@@ -1,6 +1,0 @@
-{
-  "name": "Baseball-pi",
-  "tagline": "A dedicated Raspberry PI Baseball scoreboard using LEDs and a 4x20 character display",
-  "body": "#Baseball-pi\r\n\r\nA Baseball scoreboard designed for the Raspberry Pi 3, a work in progress.  Go Mariners.\r\n\r\n[Visual mockup of the hardware components](https://goldman60.github.io/baseball-pi/images/Visual%20Mockup.svg)\r\n\r\n##Hardware\r\n* 20x4 Character Display (based on the HD44780 controller)\r\n* LEDs (for balls, strikes, out, on base)\r\n* Raspberry Pi3 Model B (Mine runs Ubuntu Mate) - Another type of Pi may work but I'm not testing on any other hardware\r\n\r\n\r\n##Compiling\r\n\r\nDependencies:\r\n* curlpp\r\n* libxml++-2.6\r\n* libcurl4-openssl\r\n* cmake (written for 3.5, should work under 3.0 if you modify CMakeLists.txt's required version)\r\n* make\r\n* gcc (with C++ packages)\r\n\r\nInstructions:\r\n\r\n1. Download the source using your preffered method\r\n2. in the source directory\r\n\r\n    ```bash\r\n    mkdir build\r\n    cd build\r\n    cmake ..\r\n    make\r\n    ```\r\n\r\n3. Execute the new executable\r\n\r\n    ```bash\r\n    ./baseball-pi\r\n    ```\r\n",
-  "note": "Don't delete this file! It's used internally to help with page regeneration."
-}
