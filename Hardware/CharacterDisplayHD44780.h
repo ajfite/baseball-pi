@@ -66,8 +66,6 @@ public:
     //TODO: General clear command
     //TODO: Implement shifting
     //TODO: Implement Cursor controls
-
-    //TODO: Sit down and make the character map
 };
 
 
