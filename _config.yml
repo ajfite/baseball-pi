@@ -12,7 +12,7 @@ description: > # this means to ignore newlines until "baseurl:"
   A baseball scoreboard written in C++ for the Raspberry Pi 3 and
   hardware connected through the GPIO pins
 baseurl: "/baseball-pi" # the subpath of your site, e.g. /blog
-url: "https://goldman60.github.io/" # the base hostname & protocol for your site
+url: "https://github.ajfite.com/" # the base hostname & protocol for your site
 twitter_username: ajfite
 github_username:  Goldman60
 
