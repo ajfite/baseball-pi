@@ -9,9 +9,11 @@
 #include "../DataStructures/Game.h"
 #include "../DataStructures/XMLMemoryUnit.h"
 
+//TODO: Rewrite of this class would be good
 class XMLppTools {
 public:
-    static void populateGameFromScoreboardXML(Glib::ustring url, Game * gameToPopulate, XMLMemoryUnit * scoreboardXMLMemory, Glib::ustring teamIDToFind);
+    static void populateGameFromScoreboardXML(Game * gameToPopulate, XMLMemoryUnit * scoreboardXMLMemory, Glib::ustring teamIDToFind);
+    static void populateScoreboardXML(Game * gameObj, XMLMemoryUnit * xmlMem);
 };
 
 

@@ -13,6 +13,7 @@ class MLBDate {
 private:
     const size_t MAX_FORMAT_LENG = 28;
     Glib::ustring * formatStr;
+    void formatString();
 public:
     int day;
     int month;
@@ -20,6 +21,8 @@ public:
 
     MLBDate();
     MLBDate(time_t date);
+    MLBDate(Glib::ustring mm, Glib::ustring dd, Glib::ustring yy);
+    MLBDate(int mm, int dd, int yy);
     Glib::ustring MLBDateString();
 };
 

@@ -7,6 +7,7 @@
 
 
 #include <glibmm/ustring.h>
+#include <vector>
 #include "Team.h"
 
 /**
@@ -15,8 +16,14 @@
 class Game {
 public:
     Glib::ustring gameID;
-    Team home;
-    Team away;
+    Team * home;
+    Team * away;
+
+    std::vector<int> homeScore;
+    std::vector<int> awayScore;
+
+    Game(Glib::ustring id);
+    Game();
 };
 
 
