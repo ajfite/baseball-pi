@@ -49,7 +49,7 @@ int main() {
             disp->SendMessage(seaVS->away->code, disp->LINE1);
             disp->SendMessage(seaVS->home->code, disp->LINE2);
 
-            delete(gameboard); //Clear it out
+            delete(&gameboard); //Clear it out
 
             this_thread::sleep_for(chrono::seconds(30)); //Poll every 30 seconds
         }
