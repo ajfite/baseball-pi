@@ -34,9 +34,10 @@ int main() {
     if(seaVS != NULL) {
         cout << "Game found" << endl;
         const ustring gameScoreboard = "http://gd2.mlb.com/components/game/mlb" + today->MLBDateString() + "gid_" + seaVS->gameID + "/boxscore.xml";
-        XMLMemoryUnit gameboard;
 
         for(int i = 0; i < 480; i++) { //Runs for a maximum of 4 hours for now
+            XMLMemoryUnit gameboard;
+
             cout << "Polling for score (attempt " << i << ")" << endl;
             CURLTools::RetrieveXMLFile(gameScoreboard, &gameboard);
 
@@ -47,6 +48,8 @@ int main() {
 
             disp->SendMessage(seaVS->away->code, disp->LINE1);
             disp->SendMessage(seaVS->home->code, disp->LINE2);
+
+            delete(gameboard); //Clear it out
 
             this_thread::sleep_for(chrono::seconds(30)); //Poll every 30 seconds
         }
