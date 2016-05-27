@@ -48,6 +48,7 @@ private:
     GPIOPin * D5 = new GPIOPin("17");
     GPIOPin * D6 = new GPIOPin("21");
     GPIOPin * D7 = new GPIOPin("22");
+    GPIOPin * Backlight = new GPIOPin("26");
 
     void LCDEnableToggle();
     void ClearData();
@@ -61,6 +62,7 @@ public:
     CharacterDisplayHD44780();
     ~CharacterDisplayHD44780();
     void SendMessage(std::string msg, unsigned short startAddress);
+    void backlightOn(bool state);
     //TODO: Make the LCD screen commands
     //TODO: Safely destroy screen
     //TODO: General clear command

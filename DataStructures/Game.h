@@ -19,8 +19,8 @@ public:
     Team * home;
     Team * away;
 
-    std::vector<int> homeScore;
-    std::vector<int> awayScore;
+    std::vector<int> * homeScore = new std::vector<int>();
+    std::vector<int> * awayScore = new std::vector<int>();
 
     Game(Glib::ustring id);
     Game();

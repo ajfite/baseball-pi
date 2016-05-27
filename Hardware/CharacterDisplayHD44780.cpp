@@ -15,6 +15,7 @@ CharacterDisplayHD44780::CharacterDisplayHD44780() {
     D5->makeOut();
     D6->makeOut();
     D7->makeOut();
+    Backlight->makeOut();
 
     //Startup the display in 4 bit mode
     LCDCommand(0x33, CMD);
@@ -23,6 +24,9 @@ CharacterDisplayHD44780::CharacterDisplayHD44780() {
     LCDCommand(0x0C, CMD);
     LCDCommand(0x28, CMD);
     LCDCommand(0x01, CMD);
+
+    //Turn On the backlight
+    backlightOn(true);
 }
 
 void CharacterDisplayHD44780::LCDCommand(unsigned short command, bool type) {
@@ -107,6 +111,16 @@ CharacterDisplayHD44780::~CharacterDisplayHD44780() {
     delete(D6);
     delete(D7);
 }
+
+void CharacterDisplayHD44780::backlightOn(bool state) {
+    if(state) {
+        Backlight->writeHigh();
+    } else {
+        Backlight->writeLow();
+    }
+}
+
+
 
 
 
