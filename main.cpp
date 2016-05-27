@@ -17,7 +17,7 @@ int main() {
 
     XMLMemoryUnit scoreboardToday;
     Game * seaVS = new Game();
-    MLBDate * today = new MLBDate();
+    MLBDate * today = new MLBDate(5,25,2016);
     CharacterDisplayHD44780 * disp = new CharacterDisplayHD44780();
 
     const ustring urlScoreboard = "http://gd2.mlb.com/components/game/mlb" + today->MLBDateString() + "scoreboard.xml";
@@ -53,7 +53,7 @@ int main() {
             snprintf(buffer[0], disp->MAX_CHAR_WIDTH - 1, "    123456789  R H E");
             snprintf(buffer[1], disp->MAX_CHAR_WIDTH - 1, "%3s %9s %2i%2i%2i", seaVS->away->code.uppercase().c_str(), Game::scoreToStr(seaVS->awayScore, false).c_str(), seaVS->awayRun, seaVS->awayHit, seaVS->awayErr);
             snprintf(buffer[2], disp->MAX_CHAR_WIDTH - 1, "%3s %9s %2i%2i%2i", seaVS->home->code.uppercase().c_str(), Game::scoreToStr(seaVS->homeScore, LastDisp).c_str(), seaVS->homeRun, seaVS->homeHit, seaVS->homeErr);
-            snprintf(buffer[3], disp->MAX_CHAR_WIDTH - 1, "%c%s %c %c2016 AJ Fite", HD44780CharacterMap::HEART, "Mariners", HD44780CharacterMap::PAUSE, HD44780CharacterMap::COPYRIGHT);
+            snprintf(buffer[3], disp->MAX_CHAR_WIDTH - 1, "%c2016 AJ Fite", HD44780CharacterMap::COPYRIGHT);
 
             cout << buffer[0] << endl;
             cout << buffer[1] << endl;
