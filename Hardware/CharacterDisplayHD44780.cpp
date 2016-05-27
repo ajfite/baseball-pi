@@ -110,6 +110,7 @@ CharacterDisplayHD44780::~CharacterDisplayHD44780() {
     delete(D5);
     delete(D6);
     delete(D7);
+    delete(Backlight);
 }
 
 void CharacterDisplayHD44780::backlightOn(bool state) {
