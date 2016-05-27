@@ -35,8 +35,6 @@
  */
 class CharacterDisplayHD44780 {
 private:
-    const int MAX_CHAR_WIDTH = 40;
-    const int MAX_LINES = 4;
     const std::chrono::milliseconds DELAY = std::chrono::milliseconds(5);
 
     const bool CMD = false;
@@ -54,6 +52,8 @@ private:
     void ClearData();
     void LCDCommand(unsigned short command, bool type);
 public:
+    const size_t MAX_CHAR_WIDTH = 40;
+    const size_t MAX_LINES = 4;
     const unsigned short LINE0 = 0x80;
     const unsigned short LINE1 = 0xC0;
     const unsigned short LINE2 = 0x94;

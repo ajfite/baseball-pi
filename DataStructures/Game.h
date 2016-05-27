@@ -19,8 +19,21 @@ public:
     Team * home;
     Team * away;
 
-    std::vector<int> * homeScore = new std::vector<int>();
-    std::vector<int> * awayScore = new std::vector<int>();
+    std::vector<int> * homeScore;
+    std::vector<int> * awayScore;
+
+    //TODO: classify this?  Depends on how granular I want the innings to be really
+    int homeHit;
+    int homeRun;
+    int homeErr;
+
+    int awayHit;
+    int awayRun;
+    int awayErr;
+
+    bool exists = false;
+
+    static std::string scoreToStr(std::vector<int> * score, bool noLast);
 
     Game(Glib::ustring id);
     Game();
