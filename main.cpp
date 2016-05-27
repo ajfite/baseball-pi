@@ -73,5 +73,9 @@ int main() {
     }
 #pragma clang diagnostic pop
 
+    this_thread::sleep_for(chrono::seconds(30));
+
+    delete(disp); //Make sure the screen is safely reset
+
     return EXIT_SUCCESS;
 }
