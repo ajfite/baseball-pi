@@ -19,7 +19,6 @@ bool quitGracefully = false;
 //TODO: Develop signal handling more
 void happyQuit(int signal) {
     quitGracefully = true;
-    exit(EXIT_SUCCESS);
 }
 
 int main() {
