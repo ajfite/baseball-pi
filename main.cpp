@@ -50,7 +50,7 @@ int main() {
                 LastDisp = true;
             }
 
-            char buffer[dispg->MAX_LINES][disp->MAX_CHAR_WIDTH];
+            char buffer[disp->MAX_LINES][disp->MAX_CHAR_WIDTH];
             snprintf(buffer[0], disp->MAX_CHAR_WIDTH, "    123456789  R H E");
             snprintf(buffer[1], disp->MAX_CHAR_WIDTH, "%3s %9s %2i%2i%2i", seaVS->away->code.uppercase().c_str(), Game::scoreToStr(seaVS->awayScore, false).c_str(), seaVS->awayRun, seaVS->awayHit, seaVS->awayErr);
             snprintf(buffer[2], disp->MAX_CHAR_WIDTH, "%3s %9s %2i%2i%2i", seaVS->home->code.uppercase().c_str(), Game::scoreToStr(seaVS->homeScore, LastDisp).c_str(), seaVS->homeRun, seaVS->homeHit, seaVS->homeErr);
