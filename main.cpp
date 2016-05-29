@@ -12,8 +12,24 @@
 using namespace std;
 using namespace Glib;
 
+bool quitGracefully = false;
+
+//Handle CTRL+C interrupt
+//TODO: Develop signal handling more
+void happyQuit(int signal) {
+    quitGracefully = true;
+    exit(EXIT_SUCCESS);
+}
+
 int main() {
     std::locale::global(std::locale("")); //Required by ustring
+    struct sigaction interruptHandler;
+    interruptHandler.sa_handler = happyQuit;
+
+    sigemptyset(&interruptHandler.sa_mask);
+    interruptHandler.sa_flags = 0;
+
+    sigaction(SIGINT, &interruptHandler, NULL);
 
     XMLMemoryUnit scoreboardToday;
     Game * seaVS = new Game();
@@ -65,14 +81,16 @@ int main() {
             disp->SendMessage(buffer[2], disp->LINE2);
             disp->SendMessage(buffer[3], disp->LINE3);
 
+            if(quitGracefully) {
+                break;
+            }
+
             this_thread::sleep_for(chrono::seconds(30)); //Poll every 30 seconds
         }
     } else {
         cout << "Game not found, Mariners may not play today!" << endl;
         disp->SendMessage("No game today!",disp->LINE0);
     }
-
-    this_thread::sleep_for(chrono::seconds(30));
 
     delete(disp); //Make sure the screen is safely reset
 
