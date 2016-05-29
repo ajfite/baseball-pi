@@ -82,27 +82,45 @@ void XMLppTools::populateScoreboardXML(Game *gameObj, XMLMemoryUnit *xmlMem) {
                 inningElem = dynamic_cast<Element *>(*i);
 
                 unsigned int inningNum = (unsigned)atoi(inningElem->get_attribute("inning")->get_value().c_str());
-                int awayInningRuns = atoi(inningElem->get_attribute("away")->get_value().c_str());
 
-                try {
-                    int homeInningRuns = atoi(inningElem->get_attribute("home")->get_value().c_str());
+                ustring awayRunStr = inningElem->get_attribute("away")->get_value();
 
-                    if (gameObj->homeScore->size() < inningNum) {
-                        gameObj->homeScore->resize(inningNum);
+                /* chaining if statements prevents a segfault when the end of an inning is reached
+                 * XML excerpt:
+                 * [...]
+                 * <inning_line_score away="0" home="0" inning="6"/>
+                 * <inning_line_score away="" inning="7"/>
+                 * [...]
+                 */
+                if(awayRunStr != "") {
+                    int awayInningRuns = atoi(awayRunStr.c_str());
+
+                    //Fixme: Check reserve to make sure this isn't hammering memory
+                    if(gameObj->awayScore->size() < inningNum) {
+                        gameObj->awayScore->resize(inningNum);
                     }
 
-                    gameObj->homeScore->at(inningNum - 1) = homeInningRuns;
-                } catch(std::exception &e) {
-                    //Home hasn't played this inning so don't bother
+                    gameObj->awayScore->at(inningNum-1) = awayInningRuns;
+
+                    ustring homeRunStr = inningElem->get_attribute("home")->get_value();
+
+                    /* handles middle of an inning
+                     * XML excerpt:
+                     * [...]
+                     * <inning_line_score away="0" home="0" inning="6"/>
+                     * <inning_line_score away="5" home="" inning="7"/>
+                     * [...]
+                     */
+                    if(homeRunStr != "") {
+                        int homeInningRuns = atoi(inningElem->get_attribute("home")->get_value().c_str());
+
+                        if(gameObj->homeScore->size() < inningNum) {
+                            gameObj->homeScore->resize(inningNum);
+                        }
+
+                        gameObj->homeScore->at(inningNum-1) = homeInningRuns;
+                    }
                 }
-
-
-                //Fixme: Check reserve to make sure this isn't hammering memory
-                if(gameObj->awayScore->size() < inningNum) {
-                    gameObj->awayScore->resize(inningNum);
-                }
-
-                gameObj->awayScore->at(inningNum-1) = awayInningRuns;
             }
         }
     } catch (std::exception &e) {
