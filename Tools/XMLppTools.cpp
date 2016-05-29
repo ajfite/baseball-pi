@@ -48,21 +48,21 @@ void XMLppTools::populateScoreboardXML(Game *gameObj, XMLMemoryUnit *xmlMem) {
         DomParser parser;
         parser.parse_memory(*(xmlMem->memory));
 
-        if(parser) {
-            Node * root;
-            root  = parser.get_document()->get_root_node();
+        if (parser) {
+            Node *root;
+            root = parser.get_document()->get_root_node();
 
-            Element * rootElem;
+            Element *rootElem;
             rootElem = dynamic_cast<Element *>(root);
 
             gameObj->away->code = rootElem->get_attribute("away_team_code")->get_value();
             gameObj->home->code = rootElem->get_attribute("home_team_code")->get_value();
 
             //Parse linescore
-            Node * linescore;
+            Node *linescore;
             linescore = root->get_first_child("linescore");
 
-            Element * linescoreElem;
+            Element *linescoreElem;
             linescoreElem = dynamic_cast<Element *>(linescore);
 
             //Retrieve base score
@@ -77,48 +77,55 @@ void XMLppTools::populateScoreboardXML(Game *gameObj, XMLMemoryUnit *xmlMem) {
             NodeSet innings;
             innings = linescore->find("//inning_line_score");
 
-            for(NodeSet::iterator i = innings.begin(); i != innings.end(); i++) {
-                Element * inningElem;
+            for (NodeSet::iterator i = innings.begin(); i != innings.end(); i++) {
+                Element *inningElem;
                 inningElem = dynamic_cast<Element *>(*i);
 
-                unsigned int inningNum = (unsigned)atoi(inningElem->get_attribute("inning")->get_value().c_str());
+                unsigned int inningNum = (unsigned) atoi(inningElem->get_attribute("inning")->get_value().c_str());
 
-                ustring awayRunStr = inningElem->get_attribute("away")->get_value();
+                xmlpp::Element::AttributeList attrList = inningElem->get_attributes();
 
-                /* chaining if statements prevents a segfault when the end of an inning is reached
-                 * XML excerpt:
-                 * [...]
-                 * <inning_line_score away="0" home="0" inning="6"/>
-                 * <inning_line_score away="" inning="7"/>
-                 * [...]
-                 */
-                if(awayRunStr != "") {
-                    int awayInningRuns = atoi(awayRunStr.c_str());
+                //FIXME: this turned into a horror filled hack, can probably eliminate half the if statements
+                if(attrList.size() > 1) {
+                    ustring awayRunStr = inningElem->get_attribute("away")->get_value();
 
-                    //Fixme: Check reserve to make sure this isn't hammering memory
-                    if(gameObj->awayScore->size() < inningNum) {
-                        gameObj->awayScore->resize(inningNum);
-                    }
-
-                    gameObj->awayScore->at(inningNum-1) = awayInningRuns;
-
-                    ustring homeRunStr = inningElem->get_attribute("home")->get_value();
-
-                    /* handles middle of an inning
+                    /* chaining if statements prevents a segfault when the end of an inning is reached
                      * XML excerpt:
                      * [...]
                      * <inning_line_score away="0" home="0" inning="6"/>
-                     * <inning_line_score away="5" home="" inning="7"/>
+                     * <inning_line_score away="" inning="7"/>
                      * [...]
                      */
-                    if(homeRunStr != "") {
-                        int homeInningRuns = atoi(inningElem->get_attribute("home")->get_value().c_str());
+                    if (awayRunStr != "") {
+                        int awayInningRuns = atoi(awayRunStr.c_str());
 
-                        if(gameObj->homeScore->size() < inningNum) {
-                            gameObj->homeScore->resize(inningNum);
+                        //Fixme: Check reserve to make sure this isn't hammering memory
+                        if (gameObj->awayScore->size() < inningNum) {
+                            gameObj->awayScore->resize(inningNum);
                         }
 
-                        gameObj->homeScore->at(inningNum-1) = homeInningRuns;
+                        gameObj->awayScore->at(inningNum - 1) = awayInningRuns;
+
+                        if(attrList.size() > 2) {
+                            ustring homeRunStr = inningElem->get_attribute("home")->get_value();
+
+                            /* handles middle of an inning
+                             * XML excerpt:
+                             * [...]
+                             * <inning_line_score away="0" home="0" inning="6"/>
+                             * <inning_line_score away="5" home="" inning="7"/>
+                             * [...]
+                             */
+                            if (homeRunStr != "") {
+                                int homeInningRuns = atoi(inningElem->get_attribute("home")->get_value().c_str());
+
+                                if (gameObj->homeScore->size() < inningNum) {
+                                    gameObj->homeScore->resize(inningNum);
+                                }
+
+                                gameObj->homeScore->at(inningNum - 1) = homeInningRuns;
+                            }
+                        }
                     }
                 }
             }
