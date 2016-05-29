@@ -30,8 +30,7 @@ int main() {
 
     //Grab game score
     //GDB finds an erroneous "statement always true" here, suppressing warning for now
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCDFAInspection"
+
     if(seaVS->exists) {
         cout << "Game found" << endl;
         const ustring gameScoreboard = "http://gd2.mlb.com/components/game/mlb" + today->MLBDateString() + "gid_" + seaVS->gameID + "/boxscore.xml";
@@ -72,7 +71,6 @@ int main() {
         cout << "Game not found, Mariners may not play today!" << endl;
         disp->SendMessage("No game today!",disp->LINE0);
     }
-#pragma clang diagnostic pop
 
     this_thread::sleep_for(chrono::seconds(30));
 
