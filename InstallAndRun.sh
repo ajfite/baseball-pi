@@ -18,4 +18,4 @@ make
 echo "Executing baseball-pi with root (sudo) privileges"
 echo "This is necessary to access the Linux sysfs (the GPIO ports on the Pi)"
 echo "You will be prompted for your password"
-sudo ./baseball_pi
+./baseball_pi
