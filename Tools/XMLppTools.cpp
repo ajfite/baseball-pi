@@ -83,7 +83,19 @@ void XMLppTools::populateScoreboardXML(Game *gameObj, XMLMemoryUnit *xmlMem) {
 
                 unsigned int inningNum = (unsigned)atoi(inningElem->get_attribute("inning")->get_value().c_str());
                 int awayInningRuns = atoi(inningElem->get_attribute("away")->get_value().c_str());
-                int homeInningRuns = atoi(inningElem->get_attribute("home")->get_value().c_str());
+
+                try {
+                    int homeInningRuns = atoi(inningElem->get_attribute("home")->get_value().c_str());
+
+                    if (gameObj->homeScore->size() < inningNum) {
+                        gameObj->homeScore->resize(inningNum);
+                    }
+
+                    gameObj->homeScore->at(inningNum - 1) = homeInningRuns;
+                } catch(std::exception &e) {
+                    //Home hasn't played this inning so don't bother
+                }
+
 
                 //Fixme: Check reserve to make sure this isn't hammering memory
                 if(gameObj->awayScore->size() < inningNum) {
@@ -91,12 +103,6 @@ void XMLppTools::populateScoreboardXML(Game *gameObj, XMLMemoryUnit *xmlMem) {
                 }
 
                 gameObj->awayScore->at(inningNum-1) = awayInningRuns;
-
-                if(gameObj->homeScore->size() < inningNum) {
-                    gameObj->homeScore->resize(inningNum);
-                }
-
-                gameObj->homeScore->at(inningNum-1) = homeInningRuns;
             }
         }
     } catch (std::exception &e) {
