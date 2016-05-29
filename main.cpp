@@ -1,6 +1,7 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
+#include <csignal>
 #include "DataStructures/XMLMemoryUnit.h"
 #include "Tools/CURLTools.h"
 #include "DataStructures/Game.h"
