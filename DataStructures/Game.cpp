@@ -20,6 +20,14 @@ Game::Game() {
 
     homeScore = new vector<int>();
     homeScore->reserve(20);
+
+    homeHit = 0;
+    homeRun = 0;
+    homeErr = 0;
+
+    awayHit = 0;
+    awayRun = 0;
+    awayErr = 0;
 }
 
 std::string Game::scoreToStr(std::vector<int> *score, bool noLast) {
