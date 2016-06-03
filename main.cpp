@@ -61,7 +61,7 @@ int main() {
             XMLppTools::populateScoreboardXML(seaVS, &gameboard);
 
             bool LastDisp = false;
-            if(seaVS->homeRun > seaVS->awayRun && *(seaVS->homeScore->end()) == 0 && seaVS->gameStatus == "F") { //TODO: Check to make sure this is sound
+            if(seaVS->homeRun > seaVS->awayRun && *(seaVS->homeScore->end()) == 0 && seaVS->gameStatus == "O") { //TODO: Check to make sure this is sound
                 LastDisp = true;
             }
 
