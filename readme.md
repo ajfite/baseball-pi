@@ -18,7 +18,7 @@ A Baseball scoreboard designed for the Raspberry Pi 3, a work in progress.  Go M
 
 ##Compiling
 
-Dependencies:
+#####Dependencies:
 * curlpp
 * libxml++-2.6
 * libcurl4-openssl
@@ -26,7 +26,7 @@ Dependencies:
 * make
 * gcc (with C++ packages)
 
-Instructions:
+#####Instructions:
 
 1. Download the source using your preffered method
 2. in the source directory
@@ -43,3 +43,16 @@ Instructions:
     ```bash
     ./baseball-pi
     ```
+
+#####Alternatively:
+
+Warning: I am not testing this script for general use, it is mostly for my own convenience.
+However I have some confidence it will work on other machines as its relatively simple right now.
+
+1. Download the source code
+
+2. Execute the InstallAndRun.sh file in the source code directory
+
+   ```bash
+   ./InstallAndRun.sh
+   ```
