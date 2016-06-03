@@ -34,6 +34,7 @@ public:
     /**
      * Possible values
      * I = In progress
+     * O = Over
      */
     Glib::ustring gameStatus;
 
