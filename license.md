@@ -71,7 +71,9 @@ Distributed under the LGPL version 2+
 #### GNU Lesser General Public License
 
 _Version 2.1, February 1999_
+
 _Copyright © 1991, 1999 Free Software Foundation, Inc._
+
 _51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA_
 
 Everyone is permitted to copy and distribute verbatim copies
