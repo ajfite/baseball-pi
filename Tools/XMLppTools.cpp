@@ -57,6 +57,7 @@ void XMLppTools::populateScoreboardXML(Game *gameObj, XMLMemoryUnit *xmlMem) {
 
             gameObj->away->code = rootElem->get_attribute("away_team_code")->get_value();
             gameObj->home->code = rootElem->get_attribute("home_team_code")->get_value();
+            gameObj->gameStatus = rootElem->get_attribute("status_ind")->get_value();
 
             //Parse linescore
             Node *linescore;

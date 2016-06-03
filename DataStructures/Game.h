@@ -31,6 +31,12 @@ public:
     int awayRun;
     int awayErr;
 
+    /**
+     * Possible values
+     * I = In progress
+     */
+    Glib::ustring gameStatus;
+
     bool exists = false;
 
     static std::string scoreToStr(std::vector<int> * score, bool noLast);
