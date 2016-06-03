@@ -13,3 +13,7 @@ crashing but we'll see.
 The test is in progress as of just a few minutes ago, GO MARINERS!
 
 ![Desktop screenshot]({{ site.url }}baseball-pi/images/2016-06-02-desktop.png)
+
+Edit 18:24 pst: Its working!
+
+![Its working](https://pbs.twimg.com/media/Cj_TiD8UkAAApY-.jpg)
