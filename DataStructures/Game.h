@@ -24,6 +24,7 @@ public:
 
     //TODO: classify this?  Depends on how granular I want the innings to be really
     int homeHit;
+    
     int homeRun;
     int homeErr;
 
@@ -32,9 +33,11 @@ public:
     int awayErr;
 
     /**
-     * Possible values
+     * Possible values from linescore.xml
+     * P = Pre-game
      * I = In progress
      * O = Over
+     * MA= Umpire Review - Reports from /r/mariners that this may remove significant data
      */
     Glib::ustring gameStatus;
 
