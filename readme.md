@@ -1,4 +1,4 @@
-#Baseball-pi
+# Baseball-pi
 
 A Baseball scoreboard designed for the Raspberry Pi 3, a work in progress.  Go Mariners.
 
@@ -6,17 +6,17 @@ A Baseball scoreboard designed for the Raspberry Pi 3, a work in progress.  Go M
 
 * [Progress pictures on imgur](http://imgur.com/a/cskun)
 
-* [Visit the project website and blog here!](https://goldman60.github.io/baseball-pi/)
+* [Visit my website for project news and information!](https://ajfite.com/)
 
 * This project is licensed under the MIT License, see license.md for more details.
 
-##Hardware
+## Hardware
 * 20x4 Character Display (based on the HD44780 controller)
 * LEDs (for balls, strikes, out, on base)
 * Raspberry Pi3 Model B (Mine runs Ubuntu Mate) - Another type of Pi may work but I'm not testing on any other hardware
 
 
-##Compiling
+## Compiling
 
 #####Dependencies:
 * curlpp
@@ -26,7 +26,7 @@ A Baseball scoreboard designed for the Raspberry Pi 3, a work in progress.  Go M
 * make
 * gcc (with C++ packages)
 
-#####Instructions:
+##### Instructions:
 
 1. Download the source using your preffered method
 2. in the source directory
@@ -44,7 +44,7 @@ A Baseball scoreboard designed for the Raspberry Pi 3, a work in progress.  Go M
     ./baseball-pi
     ```
 
-#####Alternatively:
+##### Alternatively:
 
 Warning: I am not testing this script for general use, it is mostly for my own convenience.
 However I have some confidence it will work on other machines as its relatively simple right now.
