@@ -3,8 +3,6 @@ name = "baseball-pi"
 version = "0.0.1"
 authors = ["AJ Fite"]
 
-[target.arm-unknown-linux-gnueabihf]
-linker = "arm-linux-gnueabihf-gcc"
-
 [dependencies]
 gpio-cdev = "0.4"
+spidev = "0.4"
