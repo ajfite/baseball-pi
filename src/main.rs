@@ -15,7 +15,6 @@ fn main() {
 
         led.set_led_color(1, 13, 5, 255, 0, 0);
         led.led_update();
-        led.led_upda
 
         thread::sleep(one_second);
 
