@@ -5,7 +5,7 @@ use self::spidev::{Spidev, SpidevOptions, SpiModeFlags};
 
 // Spi Consts
 const SPI_DEVICE_PATH: &str = "/dev/spidev1.0";
-const MAX_SPI_SPEED: u32 = 200_000;
+const MAX_SPI_SPEED: u32 = 4_000_000;
 
 // LED Protocol Consts
 const LED_COUNT: usize = 13;
@@ -46,7 +46,8 @@ impl LedControl {
         // Set up the pre-amble on the led frame
         let mut n = FRAME_WORD_COUNT;
 
-        while n < LED_ARR_SIZE {
+        // pre-fill the led preamble so the array is valid for writing immediately
+        while n < LED_ARR_SIZE - FRAME_WORD_COUNT {
             arr[n] = 0b11100000;
 
             n += FRAME_WORD_COUNT;
@@ -81,7 +82,7 @@ impl LedControl {
     }
 
     pub fn set_led_color(&mut self, led_start: usize, led_end: usize, brightness: u8, r: u8, g: u8, b: u8) {
-        for n in led_start..led_end {
+        for n in led_start..=led_end {
             self.led_array[FRAME_WORD_COUNT * n] = 0b11100000 | (0b00011111 & brightness);
             self.led_array[(FRAME_WORD_COUNT * n) + 1] = r;
             self.led_array[(FRAME_WORD_COUNT * n) + 2] = g;
