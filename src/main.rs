@@ -1,6 +1,8 @@
 // Test program to get the dotstar LEDs working in rust
 //
 
+use std::{thread, time};
+
 mod dotstar;
 
 fn main() {
@@ -8,5 +10,22 @@ fn main() {
 
     let mut led = dotstar::LedControl::new();
 
-    led.led_update(); 
+    for _ in 1..100 {
+        let one_second = time::Duration::from_secs(1);
+
+        led.set_led_color(1, 13, 16, 255, 0, 0);
+        led.led_update();
+
+        thread::sleep(one_second);
+
+        led.clear_led(1, 13);
+        led.led_update();
+        
+        thread::sleep(one_second);
+
+        led.set_led_color(1, 13, 16, 0, 255, 0);
+        led.led_update();
+
+        thread::sleep(one_second);
+    }
 }
