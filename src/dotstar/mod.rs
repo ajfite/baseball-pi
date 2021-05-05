@@ -3,6 +3,8 @@ use std::io;
 use std::io::prelude::*;
 use self::spidev::{Spidev, SpidevOptions, SpiModeFlags};
 
+const DEBUG: bool = true;
+
 // Spi Consts
 const SPI_DEVICE_PATH: &str = "/dev/spidev1.0";
 const MAX_SPI_SPEED: u32 = 4_000_000;
@@ -68,6 +70,13 @@ impl LedControl {
     }
 
     pub fn led_update(&mut self) {
+        if DEBUG {
+            for n in 0..LED_ARR_SIZE {
+                print!("{},", self.led_array[n]);
+            }
+            println!("");
+        }
+
         match self.spi_device.write(&self.led_array) {
             Ok(s) => {
                 println!("Wrote {} to LEDs", s); 
