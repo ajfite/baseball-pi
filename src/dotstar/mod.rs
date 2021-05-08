@@ -1,8 +1,11 @@
+pub mod scoreboard;
+
 extern crate spidev;
 use std::io;
 use std::io::prelude::*;
 use self::spidev::{Spidev, SpidevOptions, SpiModeFlags};
 
+// Module debug controls
 const DEBUG: bool = true;
 
 // Spi Consts
