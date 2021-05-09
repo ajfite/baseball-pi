@@ -97,8 +97,8 @@ impl LedControl {
         for n in led_start..=led_end {
             self.led_array[FRAME_WORD_COUNT * n] = 0b11100000 | (0b00011111 & brightness);
             self.led_array[(FRAME_WORD_COUNT * n) + 1] = r;
-            self.led_array[(FRAME_WORD_COUNT * n) + 2] = g;
-            self.led_array[(FRAME_WORD_COUNT * n) + 3] = b;
+            self.led_array[(FRAME_WORD_COUNT * n) + 2] = b;
+            self.led_array[(FRAME_WORD_COUNT * n) + 3] = g;
         }
     }
 }
